@@ -2,8 +2,9 @@
 
 int	main(int argc, char **argv, char **env)
 {
+	char	**path;
+	char	**cmd;
 	t_list	*arg;
-	char	r/share/applications/exo-web-browser.desktop' path;
 
 	arg = NULL;
 	(void)env;
@@ -15,6 +16,13 @@ int	main(int argc, char **argv, char **env)
 	path = get_path(env);
 	if (!path)
 		return ((int)lst_free(arg));
-	lst_print(arg);
+	cmd = lst_to_tab(arg);
+	if (!cmd)
+	{
+		lst_free(arg);
+		free_tab(cmd);
+		return (0);
+	}
+	exec_cmd(cmd, path);
 	return (0);
 }

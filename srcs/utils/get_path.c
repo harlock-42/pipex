@@ -1,5 +1,35 @@
 #include "pipex.h"
 
+static	size_t	len_split(char **split)
+{
+	size_t	i;
+
+	i = 0;
+	while (split && split[i])
+		++i;
+	return (i);
+}
+
+static	char	**add_backslash(char **split)
+{
+	char	**new;
+	int	i;
+	size_t	size;
+
+	i = 0;
+	size = len_split(split);
+	new = (char **)malloc(sizeof(char *) * size + 1);
+	if (!new)
+		return (free_tab(split));
+	while (split && split[i])
+	{
+		new[i] = ft_strjoin(split[i], "/");
+		++i;
+	}
+	free_tab(split);
+	return (new);
+}
+
 static	char	**get_var_path(char **env)
 {
 	char	**split;
@@ -14,6 +44,9 @@ static	char	**get_var_path(char **env)
 		++i;
 	}
 	split = ft_split(env[i] + 5, ':');
+	if (!split)
+		return (NULL);
+	split = add_backslash(split);
 	if (!split)
 		return (NULL);
 	return (split);
