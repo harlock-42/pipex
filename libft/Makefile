@@ -51,6 +51,7 @@ SRC_NAME	+=	ft_putendl_fd.c
 SRC_NAME	+=	ft_putnbr_fd.c
 SRC_NAME	+=	ft_putstr_fd.c
 SRC_NAME	+=	ft_split.c
+SRC_NAME	+=	ft_strcat.c
 SRC_NAME	+=	ft_strchr.c
 SRC_NAME	+=	ft_strcmp.c
 SRC_NAME	+=	ft_strcpy.c
@@ -101,6 +102,7 @@ SRC_NAME	+=	ft_printf_modulo.c
 
 SRC_NAME	+=	c_is_alnum.c
 SRC_NAME	+=	c_is_str.c
+SRC_NAME	+=	free_tab.c
 SRC_NAME	+=	print_binary.c
 SRC_NAME	+=	where_is_c.c
 

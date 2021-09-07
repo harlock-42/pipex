@@ -1,9 +1,12 @@
 #include "pipex.h"
 
+
+
 int	main(int argc, char **argv, char **env)
 {
+	(void)env;
 	t_list	*arg;
-	char	r/share/applications/exo-web-browser.desktop' path;
+	char	**path;
 
 	arg = NULL;
 	(void)env;
@@ -11,10 +14,13 @@ int	main(int argc, char **argv, char **env)
 		return (0);
 	arg = get_arg(argv + 1);
 	if (!arg)
-		return (0);
+		return (1);
 	path = get_path(env);
-	if (!path)
+	if (path == NULL)
 		return ((int)lst_free(arg));
-	lst_print(arg);
+	if (pipex(arg, path))
+		return (-1);
+	lst_free(arg);
+	free_tab(path);
 	return (0);
 }

@@ -41,9 +41,11 @@ CFLAGS		=	-Werror -Wextra -Wall -c
          ###############
           #############
 
-SRC		+=	main.c
+SRC		+=	exec.c
 SRC		+=	get_arg.c
 SRC		+=	get_path.c
+SRC		+=	main.c
+SRC		+=	pipex.c
 
 	########
 	# LIST #
@@ -58,8 +60,9 @@ SRC		+=	lst_size.c
 OBJ_PATH	=	./.obj/
 
 vpath %.c srcs/
-vpath %.c srcs/list
-vpath %.c srcs/utils
+vpath %.c srcs/exec/
+vpath %.c srcs/list/
+vpath %.c srcs/utils/
 
 OBJ			=	$(patsubst %.c, $(OBJ_PATH)%.o, $(SRC))
 

@@ -18,6 +18,7 @@ typedef struct s_list
 	int				nb;
 	int				index;
 	char			*str;
+	char			**cmd;
 	struct s_list	*next;
 }				t_list;
 
