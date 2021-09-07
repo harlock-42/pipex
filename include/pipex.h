@@ -13,9 +13,9 @@
 #ifndef PIPEX_H
 # define PIPEX_H
 
-# include <signal.h>
 # include <sys/types.h>
 # include <sys/wait.h>
+# include <signal.h>
 # include "./libft.h"
 # include "./color.h"
 # include "./list.h"
@@ -23,6 +23,9 @@
 char	**get_path(char **env);
 int     exec(char **cmd, char **path);
 int     pipex(t_list *arg, char **path);
+char	**lst_to_tab(t_list *lst);
 t_list	*get_arg(char **av);
+void	exec_cmd(char **cmd, char **path);
+void	*free_tab(char **tab);
 
 #endif

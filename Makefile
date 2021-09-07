@@ -41,11 +41,11 @@ CFLAGS		=	-Werror -Wextra -Wall -c
          ###############
           #############
 
-SRC		+=	exec.c
+SRC		+=	main.c
+SRC		+=	free_tab.c
 SRC		+=	get_arg.c
 SRC		+=	get_path.c
-SRC		+=	main.c
-SRC		+=	pipex.c
+SRC		+=	lst_to_tab.c
 
 	########
 	# LIST #

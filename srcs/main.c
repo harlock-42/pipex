@@ -4,9 +4,9 @@
 
 int	main(int argc, char **argv, char **env)
 {
-	(void)env;
-	t_list	*arg;
 	char	**path;
+	char	**cmd;
+	t_list	*arg;
 
 	arg = NULL;
 	(void)env;
@@ -22,5 +22,13 @@ int	main(int argc, char **argv, char **env)
 		return (-1);
 	lst_free(arg);
 	free_tab(path);
+	cmd = lst_to_tab(arg);
+	if (!cmd)
+	{
+		lst_free(arg);
+		free_tab(cmd);
+		return (0);
+	}
+	exec_cmd(cmd, path);
 	return (0);
 }
