@@ -1,6 +1,44 @@
 #include "pipex.h"
 
-static void get_path_cmd(char **cmd, char **path)
+char ***free_cmd(char ***cmd)
+{
+    int     i;
+    int     j;
+
+    i = 0;
+    while (cmd && cmd[i])
+    {
+        j = 0;
+        while (cmd[i] && cmd[i][j])
+        {
+            free(cmd[i][j]);
+            ++j;
+        }
+        free(cmd[i]);
+        ++i;
+    }
+    free(cmd);
+    return (NULL);
+}
+
+int check_cmd(char ***cmd)
+{
+    if (access(cmd[1][0], F_OK) == -1)
+    {
+        free_cmd(cmd);
+        ft_putstr_fd("Error : Can't execute first command\n", 2);
+        return (-1);
+    }
+    if (access(cmd[2][0], F_OK) == -1)
+    {
+        free_cmd(cmd);
+        ft_putstr_fd("Error : Can't execute second command\n", 2);
+        return (-1);
+    }
+    return (0);
+}
+
+void get_path_cmd(char **cmd, char **path)
 {
     int     i;
     char    *bin;
@@ -27,27 +65,18 @@ static void get_path_cmd(char **cmd, char **path)
     cmd[0] = bin;
 }
 
-int exec(char **cmd, char **path)
+int exec_cmd(char **cmd, char **path)
 {
-    pid_t   pid;
-    int     status;
-
-    status = 0;
     get_path_cmd(cmd, path);
-    pid = fork();
-    if (pid == (-1))
-        perror("fork");
-    else if (pid > 0)
+    if (cmd[0] == NULL)
     {
-        waitpid(pid, &status, 0);
-        kill(pid, SIGTERM);
+        printf("Aie aie aie\n");
+        return (-1);
     }
-    else
+    if (execve(cmd[0], cmd, NULL) == (-1))
     {
-        if (execve(cmd[0], cmd, NULL) == (-1))
-            perror("Shell");
-        exit(EXIT_FAILURE);
+        perror("Shell");
+        return (-1);
     }
-    (void)path;
     return (0);
 }

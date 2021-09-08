@@ -5,30 +5,24 @@
 int	main(int argc, char **argv, char **env)
 {
 	char	**path;
-	char	**cmd;
 	t_list	*arg;
+	int		ret;
 
+	ret = 0;
 	arg = NULL;
-	(void)env;
-	if (argc <= 1)
-		return (0);
+	if (argc != 5)
+	{
+		ft_putstr_fd("Error : wrong number of arguments\n", 2);
+		return (1);
+	}
 	arg = get_arg(argv + 1);
 	if (!arg)
 		return (1);
 	path = get_path(env);
 	if (path == NULL)
 		return ((int)lst_free(arg));
-	if (pipex(arg, path))
-		return (-1);
+	ret = pipex(arg, path);
 	lst_free(arg);
 	free_tab(path);
-	cmd = lst_to_tab(arg);
-	if (!cmd)
-	{
-		lst_free(arg);
-		free_tab(cmd);
-		return (0);
-	}
-	exec_cmd(cmd, path);
-	return (0);
+	return (ret);
 }

@@ -8,7 +8,6 @@ int main(int argc, char *argv[])
 {
     int     pipe_fd[2];
     pid_t   cpid;
-    char    buf;
     char    *cmd[] = {"wc", NULL};
     char    *cmd1[] = {"cat", NULL};
     int     fd_in;

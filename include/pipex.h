@@ -21,11 +21,12 @@
 # include "./list.h"
 
 char	**get_path(char **env);
-int     exec(char **cmd, char **path);
+int     check_cmd(char ***cmd);
 int     pipex(t_list *arg, char **path);
 char	**lst_to_tab(t_list *lst);
+char    ***free_cmd(char ***cmd);
 t_list	*get_arg(char **av);
-void	exec_cmd(char **cmd, char **path);
-void	*free_tab(char **tab);
+int 	exec_cmd(char **cmd, char **path);
+void    get_path_cmd(char **cmd, char **path);
 
 #endif

@@ -20,7 +20,7 @@ static	char	**add_backslash(char **split)
 	size = len_split(split);
 	new = (char **)malloc(sizeof(char *) * size + 1);
 	if (!new)
-		return (free_tab(split));
+		return ((char **)free_tab(split));
 	while (split && split[i])
 	{
 		new[i] = ft_strjoin(split[i], "/");

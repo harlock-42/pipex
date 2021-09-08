@@ -18,7 +18,7 @@ char	**lst_to_tab(t_list *lst)
 	{
 		tab[i] = ft_strdup(tmp->str);
 		if (tab[i] == NULL)
-			return (free_tab(tab));
+			return ((char **)free_tab(tab));
 		++i;
 		tmp = tmp->next;
 	}
