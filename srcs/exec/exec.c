@@ -82,12 +82,12 @@ int	exec_cmd(char **cmd, char **path)
 	get_path_cmd(cmd, path);
 	if (cmd[0] == NULL)
 	{
-		printf("Aie aie aie\n");
+		ft_putstr_fd("Error : can't get path exec command\n", 2);
 		return (-1);
 	}
 	if (execve(cmd[0], cmd, NULL) == (-1))
 	{
-		perror("Shell");
+		ft_putstr_fd("Error : failed to exec command", 2);
 		return (-1);
 	}
 	return (0);

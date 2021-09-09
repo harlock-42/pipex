@@ -82,13 +82,13 @@ static	int	execution(char ***cmd, char **path)
 	fd_in = open(cmd[0][0], O_RDONLY);
 	if (fd_in == -1)
 	{
-		ft_putstr_fd("Can't open first file\n", 2);
+		ft_putstr_fd("Error : can't open first file\n", 2);
 		return (-1);
 	}
 	fd_out = open(cmd[3][0], O_CREAT | O_TRUNC | O_WRONLY, 0664);
 	if (fd_out == -1)
 	{
-		ft_putstr_fd("Can't create or open second file\n", 2);
+		ft_putstr_fd("Error : can't create or open second file\n", 2);
 		return (-1);
 	}
 	dup2(fd_in, 0);
