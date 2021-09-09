@@ -6,7 +6,7 @@
 /*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/03 15:06:03 by tallaire          #+#    #+#             */
-/*   Updated: 2021/04/07 13:12:42 by tallaire         ###   ########.fr       */
+/*   Updated: 2021/09/08 18:47:58 by tallaire         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ size_t			ft_strlcat(char *dst, const char *src, size_t size);
 size_t			ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t			ft_strlen(const char *str);
 char			*ft_itoa(int n);
-char		    *ft_strcat(char *dst, const char *src);
+char			*ft_strcat(char *dst, const char *src);
 char			*ft_strchr(const char *s, int c);
 char			*ft_strcpy(char *dst, char const *src);
 char			*ft_strdup(const char *s1);

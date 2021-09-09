@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_path.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/09/08 18:56:13 by tallaire          #+#    #+#             */
+/*   Updated: 2021/09/08 18:56:41 by tallaire         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pipex.h"
 
 static	size_t	len_split(char **split)
@@ -13,7 +25,7 @@ static	size_t	len_split(char **split)
 static	char	**add_backslash(char **split)
 {
 	char	**new;
-	int	i;
+	int		i;
 	size_t	size;
 
 	i = 0;
@@ -33,7 +45,7 @@ static	char	**add_backslash(char **split)
 static	char	**get_var_path(char **env)
 {
 	char	**split;
-	int	i;
+	int		i;
 
 	i = 0;
 	while (env[i])

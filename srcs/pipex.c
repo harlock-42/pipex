@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pipex.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tallaire <tallaire@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/09/08 18:53:32 by tallaire          #+#    #+#             */
+/*   Updated: 2021/09/08 18:53:33 by tallaire         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pipex.h"
 
 static	char	***get_cmd(char ***cmd, t_list *arg, char **path)
@@ -24,15 +36,15 @@ static	char	***get_cmd(char ***cmd, t_list *arg, char **path)
 
 static	int	do_child1_process(char **cmd, int *pipe_fd, char **path)
 {
-		close(pipe_fd[0]);
-		dup2(pipe_fd[1], 1);
-		close(pipe_fd[1]);
-		if (exec_cmd(cmd, path))
-			return (-1);
-		return (0);
+	close(pipe_fd[0]);
+	dup2(pipe_fd[1], 1);
+	close(pipe_fd[1]);
+	if (exec_cmd(cmd, path))
+		return (-1);
+	return (0);
 }
 
-static	int	give_me_a_fork(char ***cmd, int *pipe_fd, int fd_out, char ** path)
+static int	give_me_a_fork(char ***cmd, int *pipe_fd, int fd_out, char **path)
 {
 	pid_t	cpid;
 
@@ -85,7 +97,7 @@ static	int	execution(char ***cmd, char **path)
 	return (0);
 }
 
-int pipex(t_list *arg, char **path)
+int	pipex(t_list *arg, char **path)
 {
 	char	***cmd;
 
