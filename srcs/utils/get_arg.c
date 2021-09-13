@@ -14,16 +14,24 @@
 
 t_list	*get_arg(char **av)
 {
+	char	*buff;
 	t_list	*arg;
 	int		i;
 
 	arg = NULL;
 	i = 0;
+	buff = NULL;
 	while (av[i])
 	{
-		arg = lst_add_back(ft_strdup(av[i]), 0, arg);
-		if (arg == NULL)
+		buff = ft_strdup(av[i]);
+		if (buff == NULL)
 			return (lst_free(arg));
+		arg = lst_add_back(buff, 0, arg);
+		if (arg == NULL)
+		{
+			free(buff);
+			return (lst_free(arg));
+		}
 		++i;
 	}
 	return (arg);

@@ -23,7 +23,7 @@ static	char	***get_cmd(char ***cmd, t_list *arg, char **path)
 		free_cmd(cmd);
 		return (NULL);
 	}
-	if (cmd[1][0] == '\0' || cmd[1][0] == '\0')
+	if (cmd[1][0] == NULL || cmd[2][0] == NULL)
 	{
 		ft_putstr_fd("Error : At least one of your command is empty\n", 2);
 		free_cmd(cmd);

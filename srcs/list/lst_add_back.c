@@ -21,7 +21,6 @@ static	t_list	*first_link(t_list *list, char *str, int nb)
 	list->nb = nb;
 	list->next = NULL;
 	return (list);
-	return (list);
 }
 
 t_list	*lst_add_back(char *str, int nb, t_list *list)
